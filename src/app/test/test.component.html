@@ -1,0 +1,20 @@
+<h3>OuterComponent</h3>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
+  <firstInputComponent [outerForm]="myForm"></firstInputComponent>
+  <secondInputComponent [outerForm]="myForm"></secondInputComponent>
+  <button type="submit">Submit</button>
+</form>
+
+<div>
+  Form values:
+  <pre>
+    {{myForm.value | json}}
+  </pre>
+  <p>
+    Status: {{myForm.status}}
+  </p>
+  <p>
+    Valid: {{myForm.valid}}
+  </p>
+  <p>Submit then open console to see full form.</p>
+</div>

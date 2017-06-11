@@ -15,13 +15,20 @@ export class TestComponent implements OnInit{
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+
+    // STEP1 - prepare the form model for later usage
     this.myForm = this.formBuilder.group({
-      firstname: '',
+      firstname: this.user.username,
       lastname: ''
     });
+
+    // STEP2 - when data loaded, use the real data and bind it to the model;
+    this.myForm.controls['lastname'].setValue("Detlef");
   }
 
   submitForm(): void {
+    // STEP3 - when form submitted, extract data from Form field and create JSON Values
+    // or use the JSON filter with pipe
     console.log(this.myForm);
   }
 

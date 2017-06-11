@@ -6,7 +6,9 @@
     "build": "webpack --progress",
     "watch": "npm run build -- --watch",
     "server": "webpack-dev-server --inline --progress --port 3000 --content-base src",
-    "start": "npm run server"
+    "start": "concurrently \"npm run watch\" \"npm run server\" \"npm run watch:sass\"",
+    "build:sass": "node-sass src/app/sass_folder/ -o src/app/css_folder",
+    "watch:sass": "npm run build:sass && node-sass src/app/sass_folder/ -wo src/app/css_folder/"
   },
   "contributors": [
     "Sebastian Bothe <se.bothe@me.com>"
@@ -28,8 +30,10 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ie-shim": "^0.1.0",
+    "node-sass": "^4.5.3",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
+    "sass-loader": "^6.0.5",
     "zone.js": "~0.6.26"
   },
   "devDependencies": {
@@ -45,10 +49,7 @@
     "webpack-dev-server": "2.1.0-beta.11",
     "webpack-merge": "^0.15.0"
   },
-  "keywords": [
-  ],
-  "repository": {
-  },
-  "bugs": {
-  }
+  "keywords": [],
+  "repository": {},
+  "bugs": {}
 }
